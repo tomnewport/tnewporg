@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  remote_user: deploy
+  tasks:
+  - name: Copy site directory to remote host
+    copy:
+      src: ./site
+      dest: /home/deploy/
+      owner: deploy
+      group: deploy
