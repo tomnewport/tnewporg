@@ -9,3 +9,5 @@ services:
       - "./static/:/srv/static/:Z"
       - "./proxy/nginx.conf:/etc/nginx/nginx.conf"
       - "./proxy/sites-enabled/:/etc/nginx/sites-enabled/"
+      - "../keys/tdn.crt:/etc/ssl/tdn.crt"
+      - "../keys/tdn.key:/etc/ssl/tdn.key"

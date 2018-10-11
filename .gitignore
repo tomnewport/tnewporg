@@ -1,3 +1,4 @@
 deploy/id_rsa*
 deploy/*.retry
 *.secret
+keys

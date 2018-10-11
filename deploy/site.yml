@@ -11,6 +11,22 @@
       owner: deploy
       group: deploy
 
+  - name: Install software properties common
+    apt:
+      name: software-properties-common
+      update_cache: yes
+      state: present
+
+  - name: Add certbot repo
+    apt_repository:
+      repo: ppa:certbot/certbot
+
+  - name: Install software properties common
+    apt:
+      name: python-certbot-nginx
+      update_cache: yes
+      state: present
+
   - name: Start docker-compose process
     shell: docker-compose up -d --build
     args:

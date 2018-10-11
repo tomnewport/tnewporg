@@ -20,3 +20,14 @@ remote_setup_user:
 
 remote_secure_ssh:
 	@ansible-playbook deploy/secure.yml -i deploy/production.inventory --key-file deploy/id_rsa
+
+local_ssh_keys:
+	mkdir -p keys
+	openssl req -x509 -out localhost.crt -keyout localhost.key \
+	  -newkey rsa:2048 -nodes -sha256 \
+	  -subj '/CN=localhost' -extensions EXT -config <( \
+	  printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+	mv localhost.crt tdn.crt
+	mv localhost.key tdn.key
+	mv tdn.crt keys/
+	mv tdn.key keys/
