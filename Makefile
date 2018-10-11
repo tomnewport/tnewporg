@@ -14,6 +14,7 @@ write_fingerprint:
 	grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp  || echo "Known hosts seems empty"
 	echo "$$TDN_DEPLOY_SERVER_FINGERPRINT" >> ~/.ssh/known_hosts.tmp
 	mv ~/.ssh/known_hosts.tmp ~/.ssh/known_hosts
+	cat ~/.ssh/known_hosts
 
 remote_setup_user:
 	ansible-playbook deploy/root.yml -i deploy/production.inventory --ask-pass
