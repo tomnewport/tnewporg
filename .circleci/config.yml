@@ -12,11 +12,13 @@ jobs:
             apt update && apt install -y build-essential openssh-client python3 python3-pip
             pip3 install ansible
       - run:
-          name: Run ansible playbook
+          name: Write keys
           command: |
             make write_key
             make write_fingerprint
-            ssh -i deploy/id_rsa deploy@tnewp.org sudo hostname
+      - run:
+          name: Run ansible playbook
+          command: |
             ansible-playbook \
               --inventory deploy/production.inventory \
               --key deploy/id_rsa \
