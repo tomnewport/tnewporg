@@ -11,7 +11,7 @@ jobs:
           name: Test command
           command: |
             mkdir -p ~/.ssh/
-          	touch ~/.ssh/known_hosts
+            touch ~/.ssh/known_hosts
             grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp
             apt update && apt install -y build-essential openssh-client
             ls -ltr
