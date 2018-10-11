@@ -5,7 +5,7 @@ new_key:
 
 write_key:
 	echo "$$TDN_DEPLOY_PUBLIC_KEY" > ./deploy/id_rsa.pub
-	echo "$$TDN_DEPLOY_PRIVATE_KEY" > ./deploy/id_rsa
+	echo "$$TDN_DEPLOY_PRIVATE_KEY_B64" | base64 -D > ./deploy/id_rsa
 	chmod 700 ./deploy/id_rsa
 
 write_fingerprint:
