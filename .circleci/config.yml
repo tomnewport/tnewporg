@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/ci
+    # The primary container is an instance of the first image listed. The job's commands run in this container.
+    docker:
+      - image: ubuntu:18:04
+    steps:
+      - checkout
+      - run:
+          name: Test command
+          command: |
+            ls -ltr
+            pwd
