@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Test command
           command: |
-            apt install build-essential
+            apt update && apt install build-essential
             ls -ltr
             pwd
             make write_key
