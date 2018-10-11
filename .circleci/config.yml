@@ -10,6 +10,7 @@ jobs:
       - run:
           name: Test command
           command: |
+            grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp
             apt update && apt install -y build-essential openssh-client
             ls -ltr
             pwd
