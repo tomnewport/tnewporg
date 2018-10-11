@@ -8,14 +8,20 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Test command
+          name: Test command 1
           command: |
             mkdir -p ~/.ssh/
             touch ~/.ssh/known_hosts
+      - run:
+          name: Test command 2
             grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp
+      - run:
+          name: Test command 3
             apt update && apt install -y build-essential openssh-client
             ls -ltr
             pwd
+      - run:
+          name: Test command 4
             make write_key
             make write_fingerprint
             ssh -i deploy/id_rsa deploy@tnewp.org sudo whoami
