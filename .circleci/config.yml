@@ -15,6 +15,7 @@ jobs:
       - run:
           name: Test command 2
           command: |
+            cat ~/.ssh/known_hosts
             grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp
       - run:
           name: Test command 3
