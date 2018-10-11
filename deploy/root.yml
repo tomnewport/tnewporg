@@ -1,0 +1,36 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+  - name: install python 2
+    remote_user: root
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+  # Thanks to
+  # https://stackoverflow.com/questions/33359404/ansible-best-practice-for-maintaining-list-of-sudoers
+
+  - name: Make sure we have a 'wheel' group
+    group:
+      name: wheel
+      state: present
+
+  - name: Allow 'wheel' group to have passwordless sudo
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^%wheel'
+      line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
+
+  - name: Add sudoers users to wheel group
+    user:
+      name: deploy
+      groups: wheel
+      append: yes
+      state: present
+      createhome: yes
+
+  - name: Set up authorized keys for the deploy user
+    authorized_key:
+      user: deploy
+      key: "{{ lookup('env', 'TDN_DEPLOY_PUB_KEY') }}"
