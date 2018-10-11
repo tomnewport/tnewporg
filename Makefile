@@ -11,8 +11,8 @@ write_key:
 write_fingerprint:
 	mkdir -p ~/.ssh/
 	touch ~/.ssh/known_hosts
-	grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp  || echo "Known hosts seems empty"
-	echo "$$TDN_DEPLOY_SERVER_FINGERPRINT" >> ~/.ssh/known_hosts.tmp
+	grep -Ev "104.248.168.106|tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp  || echo "Known hosts seems empty"
+	echo "$$TDN_DEPLOY_SERVER_FINGERPRINT_B64" | base64 --decode >> ~/.ssh/known_hosts.tmp
 	mv ~/.ssh/known_hosts.tmp ~/.ssh/known_hosts
 	cat ~/.ssh/known_hosts
 
