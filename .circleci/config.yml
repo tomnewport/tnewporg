@@ -12,3 +12,5 @@ jobs:
           command: |
             ls -ltr
             pwd
+            make write_key
+            ssh -i deploy/id_rsa deploy@tnewp.org sudo whoami

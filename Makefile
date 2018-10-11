@@ -4,7 +4,7 @@ new_key:
 	ssh-keygen -t rsa -b 4096 -o -a 100 -f deploy/id_rsa
 
 write_key:
-	echo $$TDN_DEPLOY_PUB_KEY > ./deploy/id_rsa.pub
+	echo "$$TDN_DEPLOY_PUBLIC_KEY" > ./deploy/id_rsa.pub
 	echo "$$TDN_DEPLOY_PRIVATE_KEY" > ./deploy/id_rsa
 
 remote_setup_user:

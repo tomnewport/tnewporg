@@ -6,7 +6,7 @@ You currently have:
 - With docker installed
 - With SSH access as root
 - SSH key pair (can be re-created using `make new_key`):
-  - `TDN_DEPLOY_PUB_KEY` - public key used for deployments
+  - `TDN_DEPLOY_PUBLIC_KEY` - public key used for deployments
   - `TDN_DEPLOY_PRIVATE_KEY` - private key used for deployments
 
 First we need to give the `deploy` user access via ssh - being able to ssh in
