@@ -17,4 +17,7 @@ jobs:
             make write_key
             make write_fingerprint
             ssh -i deploy/id_rsa deploy@tnewp.org sudo hostname
-            ansible --inventory deploy/production.inventory --key deploy/id_rsa deploy/site.yml
+            ansible-playbook \
+              --inventory deploy/production.inventory \
+              --key deploy/id_rsa \
+              deploy/site.yml
