@@ -19,4 +19,3 @@ jobs:
             make write_key
             make write_fingerprint
             ssh -i deploy/id_rsa deploy@tnewp.org sudo hostname
-            cat ~/.ssh/known_hosts | base64

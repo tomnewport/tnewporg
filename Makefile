@@ -14,7 +14,6 @@ write_fingerprint:
 	grep -Ev "104.248.168.106|tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp  || echo "Known hosts seems empty"
 	echo "$$TDN_DEPLOY_SERVER_FINGERPRINT_B64" | base64 --decode >> ~/.ssh/known_hosts.tmp
 	mv ~/.ssh/known_hosts.tmp ~/.ssh/known_hosts
-	cat ~/.ssh/known_hosts
 
 remote_setup_user:
 	ansible-playbook deploy/root.yml -i deploy/production.inventory --ask-pass
