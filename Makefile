@@ -6,6 +6,14 @@ new_key:
 write_key:
 	echo "$$TDN_DEPLOY_PUBLIC_KEY" > ./deploy/id_rsa.pub
 	echo "$$TDN_DEPLOY_PRIVATE_KEY" > ./deploy/id_rsa
+	chmod 700 ./deploy/id_rsa
+
+write_fingerprint:
+	mkdir -p ~/.ssh/
+	touch ~/.ssh/known_hosts
+	grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp
+	echo "$$TDN_DEPLOY_SERVER_FINGERPRINT" >> ~/.ssh/known_hosts.tmp
+	mv ~/.ssh/known_hosts.tmp ~/.ssh/known_hosts
 
 remote_setup_user:
 	ansible-playbook deploy/root.yml -i deploy/production.inventory --ask-pass
