@@ -8,16 +8,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Test command 1
-          command: |
-            mkdir -p ~/.ssh/
-            touch ~/.ssh/known_hosts
-            cat ~/.ssh/known_hosts
-      - run:
-          name: Test command 2
-          command: |
-            grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp
-      - run:
           name: Test command 3
           command: |
             apt update && apt install -y build-essential openssh-client
