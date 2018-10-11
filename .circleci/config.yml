@@ -14,14 +14,17 @@ jobs:
             touch ~/.ssh/known_hosts
       - run:
           name: Test command 2
+          command: |
             grep -v "tnewp.org" ~/.ssh/known_hosts > ~/.ssh/known_hosts.tmp
       - run:
           name: Test command 3
+          command: |
             apt update && apt install -y build-essential openssh-client
             ls -ltr
             pwd
       - run:
           name: Test command 4
+          command: |
             make write_key
             make write_fingerprint
             ssh -i deploy/id_rsa deploy@tnewp.org sudo whoami
