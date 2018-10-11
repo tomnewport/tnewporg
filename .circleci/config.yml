@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Test command
           command: |
-            apt update && apt install -y build-essential
+            apt update && apt install -y build-essential openssh-client
             ls -ltr
             pwd
             make write_key
