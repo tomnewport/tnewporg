@@ -5,7 +5,8 @@
   tasks:
 
   - name: Copy site directory to remote host
-    copy:
+    synchronize:
+      delete: yes
       src: ../site
       dest: /home/deploy/
       owner: deploy
