@@ -34,3 +34,22 @@
     authorized_key:
       user: deploy
       key: "{{ lookup('env', 'TDN_DEPLOY_PUB_KEY') }}"
+
+    - name: Install software properties common
+      apt:
+        name: software-properties-common
+        update_cache: yes
+        state: present
+
+    - name: Add certbot repo
+      apt_repository:
+        repo: ppa:certbot/certbot
+
+    - name: Install nginx certbot
+      apt:
+        name: "{{ item }}"
+        update_cache: yes
+        state: present
+      with_items:
+        - python3-certbot-nginx
+        - python3-certbot-dns-digitalocean

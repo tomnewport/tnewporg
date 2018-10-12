@@ -11,21 +11,27 @@
       owner: deploy
       group: deploy
 
-  - name: Install software properties common
-    apt:
-      name: software-properties-common
-      update_cache: yes
-      state: present
+  - name: Ensure keys directory exists
+    file:
+      path: /home/deploy/keys/
+      state: directory
 
-  - name: Add certbot repo
-    apt_repository:
-      repo: ppa:certbot/certbot
+  - name: Symlink private key
+    file:
+      src: /etc/letsencrypt/live/tdn.sh-0002/privkey.pem
+      dest: /home/deploy/keys/tdn.key
+      owner: deploy
+      group: deploy
+      state: link
 
-  - name: Install software properties common
-    apt:
-      name: python-certbot-nginx
-      update_cache: yes
-      state: present
+  - name: Symlink certificate
+    file:
+      src: /etc/letsencrypt/live/tdn.sh-0002/fullchain.pem
+      dest: /home/deploy/keys/tdn.crt
+      owner: deploy
+      group: deploy
+      state: link
+
 
   - name: Start docker-compose process
     shell: docker-compose up -d --build
