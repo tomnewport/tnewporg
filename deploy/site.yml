@@ -19,20 +19,20 @@
       state: directory
 
   - name: Symlink private key
-    file:
+    copy:
       src: /etc/letsencrypt/live/tdn.sh-0002/privkey.pem
       dest: /home/deploy/keys/tdn.key
       owner: deploy
       group: deploy
-      state: hard
+      remote_src: yes
 
   - name: Symlink certificate
-    file:
+    copy:
       src: /etc/letsencrypt/live/tdn.sh-0002/fullchain.pem
       dest: /home/deploy/keys/tdn.crt
       owner: deploy
       group: deploy
-      state: hard
+      remote_src: yes
 
 
   - name: Start docker-compose process
