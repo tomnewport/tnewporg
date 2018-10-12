@@ -22,7 +22,7 @@ remote_secure_ssh:
 	@ansible-playbook deploy/secure.yml -i deploy/production.inventory --key-file deploy/id_rsa
 
 local_ssh_keys:
-	mkdir -p keys
+	mkdir -p ./keys
 	openssl req -x509 -out localhost.crt -keyout localhost.key \
 	  -newkey rsa:2048 -nodes -sha256 \
 	  -subj '/CN=localhost' -extensions EXT -config <( \
