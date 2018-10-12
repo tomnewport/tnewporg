@@ -16,4 +16,4 @@ services:
   blog:
     image: ghost:2.2.2-alpine
     volumes:
-      - "./blog-data/:/var/lib/ghost/content"
+      - "../blog-data/:/var/lib/ghost/content"
