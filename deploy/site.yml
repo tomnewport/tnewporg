@@ -9,8 +9,6 @@
       delete: yes
       src: ../site
       dest: /home/deploy/
-      owner: deploy
-      group: deploy
 
   - name: Start docker-compose process
     shell: docker-compose up -d
