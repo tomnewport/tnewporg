@@ -31,7 +31,7 @@ jobs:
       - checkout
       - run:
           name: TEST
-          command: ls -ltr
+          command: ls -lth
 
 workflows:
   version: 2
