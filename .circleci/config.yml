@@ -30,15 +30,24 @@ jobs:
     steps:
       - checkout
       - run:
-          name: TEST
-          command: ls -lth
+          name: Write keys
+          command: |
+            make write_key
+            make write_fingerprint
+      - run:
+          name: Run ansible playbook
+          command: |
+            ansible-playbook \
+              --inventory deploy/production.inventory \
+              --key deploy/id_rsa \
+              deploy/renew_cert.yml
 
 workflows:
   version: 2
   Renew SSL:
     triggers:
       - schedule:
-          cron: "0,5,10,15,20,25,30,35,40,45,50,55 * * * *"
+          cron: "0 * * * *"
           filters:
             branches:
               only:
