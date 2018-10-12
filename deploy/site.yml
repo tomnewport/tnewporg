@@ -4,6 +4,11 @@
   remote_user: deploy
   tasks:
 
+  - name: Install rsync
+    apt:
+      name: rsync
+      status: present
+
   - name: Copy site directory to remote host
     synchronize:
       delete: yes
