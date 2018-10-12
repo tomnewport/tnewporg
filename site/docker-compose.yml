@@ -11,3 +11,9 @@ services:
       - "./proxy/sites-enabled/:/etc/nginx/sites-enabled/"
       - "../keys/tdn.crt:/etc/ssl/tdn.crt"
       - "../keys/tdn.key:/etc/ssl/tdn.key"
+    links:
+      - blog
+  blog:
+    image: ghost:2.2.2-alpine
+    volumes:
+      "./blog-data/:/var/lib/ghost/content"
