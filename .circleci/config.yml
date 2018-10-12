@@ -47,8 +47,8 @@ workflows:
       - renew_ssl
   deploy:
     jobs:
-      - deploy-to-production
-    filters:
-      branches:
-        only:
-          - master
+      - deploy-to-production:
+          filters:
+            branches:
+              only:
+                - master
