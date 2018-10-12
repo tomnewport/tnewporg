@@ -30,22 +30,15 @@ jobs:
       steps:
         - checkout
         - run:
-            name: Install pre-reqs
-            command: |
-              apt update && apt install -y build-essential openssh-client python3 python3-pip
-              pip3 install ansible
-        - run:
-            name: Write keys
-            command: |
-              make write_key
-              make write_fingerprint
+            name: TEST
+            command: ls -ltr
 
 workflows:
   version: 2
-  nightly:
+  renew_ssl:
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "*/5 * * * *"
           filters:
             branches:
               only:
