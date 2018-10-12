@@ -11,29 +11,6 @@
       owner: deploy
       group: deploy
 
-  - name: Ensure keys directory exists
-    file:
-      path: /home/deploy/keys/
-      owner: deploy
-      group: deploy
-      state: directory
-
-  - name: Symlink private key
-    copy:
-      src: /etc/letsencrypt/live/tdn.sh-0002/privkey.pem
-      dest: /home/deploy/keys/tdn.key
-      owner: deploy
-      group: deploy
-      remote_src: yes
-
-  - name: Symlink certificate
-    copy:
-      src: /etc/letsencrypt/live/tdn.sh-0002/fullchain.pem
-      dest: /home/deploy/keys/tdn.crt
-      owner: deploy
-      group: deploy
-      remote_src: yes
-
   - name: Start docker-compose process
     shell: docker-compose up -d
     args:

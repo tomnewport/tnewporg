@@ -28,3 +28,15 @@ We can still log in as root. This is bad.
 
 Nice. We now have a fairly securely set up remote host which we can access via
 ssh.
+
+### SSL certificate notes
+
+The SSL certificate needs updating once every 90 days. It is originally created using this command as root:
+
+    certbot certonly \
+      --dns-digitalocean \
+      --dns-digitalocean-credentials ~/.do-api.ini \
+      -d "*.tnewp.org" \
+      -d "*.tdn.sh" \
+      -d "tnewp.org" \
+      -d "tdn.sh"
