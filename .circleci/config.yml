@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  deploy:
+  deploy-to-production:
     working_directory: ~/ci
     docker:
       - image: library/ubuntu:18.04
@@ -47,7 +47,7 @@ workflows:
       - renew_ssl
   deploy:
     jobs:
-      - deploy
+      - deploy-to-production
     filters:
       branches:
         only:
