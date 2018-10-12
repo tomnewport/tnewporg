@@ -28,3 +28,10 @@
         owner: deploy
         group: deploy
         remote_src: yes
+
+    - name: Restart nginx
+      shell: "docker-compose restart {{ item }}"
+      args:
+        chdir: /home/deploy/site
+      with_items:
+        - proxy
