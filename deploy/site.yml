@@ -35,6 +35,13 @@
       remote_src: yes
 
   - name: Start docker-compose process
-    shell: docker-compose up -d --build
+    shell: docker-compose up -d
     args:
       chdir: /home/deploy/site
+
+  - name: Restart nginx
+    shell: "docker-compose restart {{ item }}"
+    args:
+      chdir: /home/deploy/site
+    with_items:
+      - proxy
