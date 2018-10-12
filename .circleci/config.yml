@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  deploy-to-production:
+  Deploy to production:
     working_directory: ~/ci
     docker:
       - image: library/ubuntu:18.04
@@ -23,7 +23,7 @@ jobs:
               --inventory deploy/production.inventory \
               --key deploy/id_rsa \
               deploy/site.yml
-  renew_ssl:
+  Renew SSL:
     working_directory: ~/ci
     docker:
       - image: library/ubuntu:18.04
@@ -35,7 +35,7 @@ jobs:
 
 workflows:
   version: 2
-  renew_ssl:
+  Renew SSL:
     triggers:
       - schedule:
           cron: "0,5,10,15,20,25,30,35,40,45,50,55 * * * *"
@@ -44,10 +44,10 @@ workflows:
               only:
                 - master
     jobs:
-      - renew_ssl
-  deploy:
+      - Renew SSL
+  Deploy:
     jobs:
-      - deploy-to-production:
+      - Deploy to production:
           filters:
             branches:
               only:
