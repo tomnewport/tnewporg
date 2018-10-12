@@ -23,15 +23,15 @@ jobs:
               --inventory deploy/production.inventory \
               --key deploy/id_rsa \
               deploy/site.yml
-    renew_ssl:
-      working_directory: ~/ci
-      docker:
-        - image: library/ubuntu:18.04
-      steps:
-        - checkout
-        - run:
-            name: TEST
-            command: ls -ltr
+  renew_ssl:
+    working_directory: ~/ci
+    docker:
+      - image: library/ubuntu:18.04
+    steps:
+      - checkout
+      - run:
+          name: TEST
+          command: ls -ltr
 
 workflows:
   version: 2
