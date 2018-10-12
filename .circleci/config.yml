@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  🎁 Deploy to production:
+  Deploy to production:
     working_directory: ~/ci
     docker:
       - image: library/ubuntu:18.04
@@ -23,7 +23,7 @@ jobs:
               --inventory deploy/production.inventory \
               --key deploy/id_rsa \
               deploy/site.yml
-  🔐 Renew SSL:
+  Renew SSL:
     working_directory: ~/ci
     docker:
       - image: library/ubuntu:18.04
@@ -53,10 +53,10 @@ workflows:
               only:
                 - master
     jobs:
-      - 🔐 Renew SSL
+      - Renew SSL
   Deploy:
     jobs:
-      - 🎁 Deploy to production:
+      - Deploy to production:
           filters:
             branches:
               only:
