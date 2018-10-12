@@ -19,4 +19,4 @@ services:
     volumes:
       - "../blog-data/:/var/lib/ghost/content"
     environment:
-      url: notes.tdn.sh
+      url: https://notes.tdn.sh
