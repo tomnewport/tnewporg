@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  deploy:
     working_directory: ~/ci
     docker:
       - image: library/ubuntu:18.04
@@ -45,3 +45,10 @@ workflows:
                 - master
     jobs:
       - renew_ssl
+  deploy:
+    jobs:
+      - deploy
+    filters:
+      branches:
+        only:
+          - master
