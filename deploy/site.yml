@@ -24,7 +24,7 @@
       dest: /home/deploy/keys/tdn.key
       owner: deploy
       group: deploy
-      state: link
+      state: hard
 
   - name: Symlink certificate
     file:
@@ -32,7 +32,7 @@
       dest: /home/deploy/keys/tdn.crt
       owner: deploy
       group: deploy
-      state: link
+      state: hard
 
 
   - name: Start docker-compose process
