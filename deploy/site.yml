@@ -7,7 +7,7 @@
   - name: Install rsync
     apt:
       name: rsync
-      status: present
+      state: present
 
   - name: Copy site directory to remote host
     synchronize:
