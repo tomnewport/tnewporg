@@ -30,6 +30,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Make
+          commans: apt-get install build-essential
+      - run:
           name: Write keys
           command: |
             make write_key
